@@ -75,15 +75,15 @@ function _M.ReadHomeTimeline()
       HomeTimelineServiceClient, "home-timeline-service.social-network.svc.cluster.local", 9090)
   local status, ret = pcall(client.ReadHomeTimeline, client, req_id,
       tonumber(args.user_id), tonumber(args.start), tonumber(args.stop), carrier)
-  GenericObjectPool:returnConnection(client)
+  --GenericObjectPool:returnConnection(client)
   if not status then
     ngx.status = ngx.HTTP_INTERNAL_SERVER_ERROR
     if (ret.message) then
-      ngx.say("Get home-timeline failure: " .. ret.message)
-      ngx.log(ngx.ERR, "Get home-timeline failure: " .. ret.message)
+      ngx.say("Get home-timeline failure: ")-- .. ret.message)
+      ngx.log(ngx.ERR, "Get home-timeline failure: ")-- .. ret.message)
     else
-      ngx.say("Get home-timeline failure: " .. ret.message)
-      ngx.log(ngx.ERR, "Get home-timeline failure: " .. ret.message)
+      ngx.say("Get home-timeline failure: ") -- .. ret.message)
+      ngx.log(ngx.ERR, "Get home-timeline failure: ")-- .. ret.message)
     end
     ngx.exit(ngx.HTTP_INTERNAL_SERVER_ERROR)
   else
