@@ -15,11 +15,11 @@ local function _UploadUserId(req_id, post, carrier)
       req_id, tonumber(post.user_id), post.username, carrier)
   if not status then
     ngx.status = ngx.HTTP_INTERNAL_SERVER_ERROR
-    ngx.say("Upload user_id failed: " .. err.message)
-    ngx.log(ngx.ERR, "Upload user_id failed: " .. err.message)
+    ngx.say("Upload user_id failed: ") -- .. err.message)
+    ngx.log(ngx.ERR, "Upload user_id failed: ") -- .. err.message)
     ngx.exit(ngx.HTTP_INTERNAL_SERVER_ERROR)
   end
-  GenericObjectPool:returnConnection(user_client)
+  --GenericObjectPool:returnConnection(user_client)
 end
 
 local function _UploadText(req_id, post, carrier)
@@ -33,11 +33,11 @@ local function _UploadText(req_id, post, carrier)
       post.text, carrier)
   if not status then
     ngx.status = ngx.HTTP_INTERNAL_SERVER_ERROR
-    ngx.say("Upload text failed: " .. err.message)
-    ngx.log(ngx.ERR, "Upload text failed: " .. err.message)
+    ngx.say("Upload text failed: ")-- .. err.message)
+    ngx.log(ngx.ERR, "Upload text failed: ")-- .. err.message)
     ngx.exit(ngx.HTTP_INTERNAL_SERVER_ERROR)
   end
-  GenericObjectPool:returnConnection(text_client)
+  --GenericObjectPool:returnConnection(text_client)
 end
 
 local function _UploadUniqueId(req_id, post, carrier)
@@ -51,11 +51,11 @@ local function _UploadUniqueId(req_id, post, carrier)
       req_id, tonumber(post.post_type), carrier)
   if not status then
     ngx.status = ngx.HTTP_INTERNAL_SERVER_ERROR
-    ngx.say("Upload unique_id failed: " .. err.message)
-    ngx.log(ngx.ERR, "Upload unique_id failed: " .. err.message)
+    ngx.say("Upload unique_id failed: ") -- .. err.message)
+    ngx.log(ngx.ERR, "Upload unique_id failed: ") -- .. err.message)
     ngx.exit(ngx.HTTP_INTERNAL_SERVER_ERROR)
   end
-  GenericObjectPool:returnConnection(unique_id_client)
+  --GenericObjectPool:returnConnection(unique_id_client)
 end
 
 local function _UploadMedia(req_id, post, carrier)
@@ -76,11 +76,11 @@ local function _UploadMedia(req_id, post, carrier)
   end
   if not status then
     ngx.status = ngx.HTTP_INTERNAL_SERVER_ERROR
-    ngx.say("Upload media failed: " .. err.message)
-    ngx.log(ngx.ERR, "Upload media failed: " .. err.message)
+    ngx.say("Upload media failed: ") -- .. err.message)
+    ngx.log(ngx.ERR, "Upload media failed: ") -- .. err.message)
     ngx.exit(ngx.HTTP_INTERNAL_SERVER_ERROR)
   end
-  GenericObjectPool:returnConnection(media_client)
+  -- GenericObjectPool:returnConnection(media_client)
 end
 
 function _M.ComposePost()
