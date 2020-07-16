@@ -42,11 +42,11 @@ function _M.Unfollow()
 
   if not status then
     ngx.status = ngx.HTTP_INTERNAL_SERVER_ERROR
-    ngx.say("Unfollow Failed: " .. err.message)
-    ngx.log(ngx.ERR, "Unfollow Failed: " .. err.message)
+    ngx.say("Unfollow Failed: ") -- .. err.message)
+    ngx.log(ngx.ERR, "Unfollow Failed: ") -- .. err.message)
     ngx.exit(ngx.HTTP_INTERNAL_SERVER_ERROR)
   end
-  GenericObjectPool:returnConnection(client)
+  --GenericObjectPool:returnConnection(client)
   span:finish()
 
 end
