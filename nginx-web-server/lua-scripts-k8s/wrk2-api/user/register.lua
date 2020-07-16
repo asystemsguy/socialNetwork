@@ -35,16 +35,16 @@ function _M.RegisterUser()
 
   local status, err = pcall(client.RegisterUserWithId, client, req_id, post.first_name,
       post.last_name, post.username, post.password, tonumber(post.user_id), carrier)
-  GenericObjectPool:returnConnection(client)
+  --GenericObjectPool:returnConnection(client)
 
   if not status then
     ngx.status = ngx.HTTP_INTERNAL_SERVER_ERROR
     if (err.message) then
-      ngx.say("User registration failure: " .. err.message)
-      ngx.log(ngx.ERR, "User registration failure: " .. err.message)
+      ngx.say("User registration failure: ") -- .. err.message)
+      ngx.log(ngx.ERR, "User registration failure: ") -- .. err.message)
     else
-      ngx.say("User registration failure: " .. err.message)
-      ngx.log(ngx.ERR, "User registration failure: " .. err.message)
+      ngx.say("User registration failure: ") -- .. err.message)
+      ngx.log(ngx.ERR, "User registration failure: ") -- .. err.message)
     end
     ngx.exit(ngx.HTTP_INTERNAL_SERVER_ERROR)
   end
